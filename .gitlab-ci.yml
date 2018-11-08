@@ -44,7 +44,8 @@ production:
   script:
     - apt-get update -qy
     - apt-get install -y ruby-dev
-    - git add ./dist
+    - git add *
+    - git commit -m "Push to heroku"
     - git config --global user.name "msaintmartin"
     - git config --global user.email "matthieu.saint-martin@ynov.com"
     - gem install dpl
