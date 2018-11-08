@@ -45,7 +45,7 @@ production:
     - apt-get update -qy
     - apt-get install -y ruby-dev
     - git add ./dist
-    - git config --global user.name "msaintmartin"
-    - git config --global user.email "matthieu.saint-martin@ynov.com"
+    - git config --global user.name "msaintmartin"
+    - git config --global user.email "matthieu.saint-martin@ynov.com"
     - gem install dpl
     - dpl --provider=heroku --app=gta-ynov-cours --api-key=195bd5a9-b091-4986-bc86-de2d12ebe09a
