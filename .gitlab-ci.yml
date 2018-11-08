@@ -30,6 +30,7 @@ test_ci_push:
   allow_failure: false
   script:
     - ls
+    - git status
     - git remote add github $URL_GITHUB
     - git config --global user.name "msaintmartin"
     - git config --global user.email "matthieu.saint-martin@ynov.com"
