@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "dayspan-vuetify": "^0.3.6",
     "uikit": "^3.0.0-rc.21",
     "vue": "^2.5.17",
     "vue-router": "^3.0.1"
