@@ -1,0 +1,48 @@
+image: node:latest
+
+stages:
+  - install
+  - build
+  - push_github
+  - production
+
+install:
+  stage: install
+  script:
+    - npm i
+  artifacts:
+    expire_in: 1 day
+    paths:
+      - node_modules/
+
+
+build:
+  stage: build
+  script:
+    - npm run build
+  artifacts:
+    expire_in: 1 day
+    paths:
+      - dist/
+
+test_ci_push:
+  stage: push_github
+  allow_failure: false
+  script:
+    - git remote add github $URL_GITHUB
+    - git config --global user.name "msaintmartin"
+    - git config --global user.email "matthieu.saint-martin@ynov.com"
+    - git add --all
+    - git commit -m "GitLab Runner Push"
+    - git push -u github master
+    - cd ..
+
+production:
+  type: deploy
+  stage: production
+  image: ruby:latest
+  script:
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
+    - gem install dpl
+    - dpl --provider=heroku --app=gta-ynov-cours --api-key=195bd5a9-b091-4986-bc86-de2d12ebe09a
