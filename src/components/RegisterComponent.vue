@@ -59,7 +59,7 @@
 
                 if (this.password === this.password_confirmation && this.password.length > 0)
                 {
-                    let url = "http://localhost:3000/register"
+                    let url = "https://gta-ynov-cours-api.herokuapp.com/register"
                     this.$http.post(url, {
                         name: this.name,
                         email: this.email,
