@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Home from './../components/HomeComponent'
 import Login from './../components/LoginComponent'
 import Register from './../components/RegisterComponent'
-import UserBoard from './../components/UserBoardComponent'
+import Dashboard from '../components/DashboardComponent'
 import Admin from './../components/AdminComponent'
 
 Vue.use(Router)
@@ -27,18 +27,18 @@ let router = new Router({
                 guest: true
             }
         },
-        {
-            path: '/register',
-            name: 'register',
-            component: Register,
-            meta: {
-                guest: true
-            }
-        },
+        // {
+        //     path: '/register',
+        //     name: 'register',
+        //     component: Register,
+        //     meta: {
+        //         guest: true
+        //     }
+        // },
         {
             path: '/dashboard',
-            name: 'userboard',
-            component: UserBoard,
+            name: 'Dashboard',
+            component: Dashboard,
             meta: {
                 requiresAuth: true
             }
@@ -69,7 +69,7 @@ router.beforeEach((to, from, next) => {
                     next()
                 }
                 else{
-                    next({ name: 'userboard'})
+                    next({ name: 'Dashboard'})
                 }
             }else {
                 next()
@@ -80,7 +80,7 @@ router.beforeEach((to, from, next) => {
             next()
         }
         else{
-            next({ name: 'userboard'})
+            next({ name: 'Dashboard'})
         }
     }else {
         next()

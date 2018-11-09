@@ -1,10 +1,12 @@
 <template>
-    <div>
-        <h4>Login</h4>
-        <form>
-            <label for="email" >E-Mail Address</label>
+    <div id="login-container">
+        <div id="form-container">
+            <h4>Login</h4>
             <div>
-                <input id="email" type="email" v-model="email" required autofocus>
+                <label for="email" >E-Mail Address</label>
+                <div>
+                    <input id="email" type="email" v-model="email" required autofocus>
+                </div>
             </div>
             <div>
                 <label for="password" >Password</label>
@@ -17,8 +19,8 @@
                     Login
                 </button>
             </div>
-        </form>
-        <router-link to="/register">Register</router-link>
+            <!--<router-link to="/register">Register</router-link>-->
+        </div>
     </div>
 </template>
 
@@ -76,5 +78,46 @@
 </script>
 
 <style scoped>
-
+    #login-container{
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    #form-container{
+        width: 30vw;
+        margin: auto;
+        height: 300px;
+        background: #333334;
+        border-radius: .3em;
+        box-shadow: 2px 2px 10px #000;display: flex;
+        flex-flow: column;
+        justify-content: space-around;
+        color: #d8d8d8!important;
+        padding: 20px 0;
+    }
+    #form-container > h4{
+        color: #D8D8D8;
+        margin: 0;
+    }
+    #form-container input{
+        background: #555;
+        border: 0;
+        border-radius: .3em;
+        width: 200px;
+        box-shadow: 4px 2px 10px #222;
+        max-width: 90%;
+        color: #D8D8D8;
+        padding: 5px;
+    }
+    #form-container button{
+        background: #555;
+        border: 0;
+        border-radius: .3em;
+        width: 200px;
+        box-shadow: 4px 2px 10px #222;
+        max-width: 90%;
+        color: #D8D8D8;
+        padding: 5px 0;
+    }
 </style>
