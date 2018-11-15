@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './../components/HomeComponent'
 import Login from './../components/LoginComponent'
-import Register from './../components/RegisterComponent'
 import Dashboard from '../components/DashboardComponent'
 import Admin from './../components/AdminComponent'
 
@@ -49,7 +48,7 @@ let router = new Router({
             component: Admin,
             meta: {
                 requiresAuth: true,
-                is_admin : true
+                role : "drh"
             }
         },
     ]
@@ -64,8 +63,8 @@ router.beforeEach((to, from, next) => {
             })
         } else {
             let user = JSON.parse(localStorage.getItem('user'))
-            if(to.matched.some(record => record.meta.is_admin)) {
-                if(user.is_admin == 1){
+            if(to.meta.role != undefined) {
+                if(user.role === to.meta.role){
                     next()
                 }
                 else{

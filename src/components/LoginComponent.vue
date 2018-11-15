@@ -37,7 +37,9 @@
             handleSubmit(e){
                 e.preventDefault()
                 if (this.password.length > 0) {
-                    this.$http.post('https://gta-ynov-cours-api.herokuapp.com/login', {
+                    var url = "https://gta-ynov-cours-api.herokuapp.com/login"
+                    // url = "http://localhost:3000/login"
+                    this.$http.post(url, {
                         email: this.email,
                         password: this.password
                     })
@@ -69,7 +71,7 @@
                             }
                         })
                         .catch(function (error) {
-                            console.error(error.response);
+                            console.error(error);
                         });
                 }
             }

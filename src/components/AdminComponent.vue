@@ -1,7 +1,16 @@
 <template>
-    <div class="hello">
-        <h1>Welcome to administrator page</h1>
-        <h2>{{msg}}</h2>
+    <div>
+        <h1>Admin page</h1>
+        <div class="container">
+            <div class="col-xs-12">
+                <h2>Motifs d'absences</h2>
+                <ul>
+                    <li v-for="absence in absences">
+                        {{absence.name}}
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -10,8 +19,15 @@
         name: "AdminComponent",
         data () {
             return {
-                msg: 'The superheros'
+                absences: []
             }
+        },
+        beforeCreate(){
+            var url = "https://gta-ynov-cours-api.herokuapp.com/absences"
+            url = "http://localhost:3000/absences"
+            this.$http.get(url).then((data)=>{
+                this.absences = data.data.absences
+            })
         }
     }
 </script>

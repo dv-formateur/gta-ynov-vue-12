@@ -15,7 +15,7 @@ Salarié:
   Informations de base relatives à son contrat en cours :
   Date de début, date de fin (si existante) et ,nombre d’heures/semaine
   Bilan d’annualisation pour le contrat en cours ?
-  Solde de co ngés pour le contrat en cours
+  Solde de congés pour le contrat en cours
   Filtrer pour différents contrats
   Demander des modifications (congé payé, récupération de temps de travail, aménagement d’horaire) de planning à son responsable d’équipe. Les demandes doivent être validées. 
   Imprimer un document récapitulatif de ses congés (acquis, pris, solde) et dates associées.
@@ -48,4 +48,8 @@ DRH:
 
 09/11/2018 :
 - Mise en place de la navbar adaptative et réflexion sur la structure du projet
+
+
+15/11/2018: 
+- 
 ```

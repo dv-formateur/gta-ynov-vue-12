@@ -13,7 +13,6 @@
                     <a href="#">Salarié</a>
                     <div class="uk-navbar-dropdown">
                         <ul class="uk-nav uk-navbar-dropdown-nav">
-                            <li><a href="#">Profil</a></li>
                             <li><a href="#">Planning</a></li>
                             <li><a href="#">Tableau de bord personnel</a></li>
                         </ul>
@@ -33,7 +32,7 @@
                     <a href="#">DRH</a>
                     <div class="uk-navbar-dropdown">
                         <ul class="uk-nav uk-navbar-dropdown-nav">
-                            <li class="uk-active"><a href="#">Parametrer les motifs d’absence</a></li>
+                            <li class="uk-active"><router-link to="admin">Paramètres de l'application</router-link></li>
                             <li><a href="#">Item</a></li>
                             <li><a href="#">Item</a></li>
                         </ul>
@@ -47,7 +46,7 @@
                     <a id="dropdown_opener">{{user.name}} <span id="initiales_container">{{initiales()}}</span></a>
                     <div class="uk-navbar-dropdown">
                         <ul class="uk-nav uk-navbar-dropdown-nav">
-                            <li class="uk-active"><a href="#">Profil</a></li>
+                            <li><router-link to="profil">Profil</router-link></li>
                             <li class="uk-nav-divider"></li>
                             <li><a class="uk-active" v-on:click="logout()">Logout</a></li>
                         </ul>

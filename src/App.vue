@@ -12,12 +12,7 @@ export default {
   name: 'app',
   components: {
       NavbarComponent
-  },
-    beforeCreate(){
-        if(localStorage.getItem("user")!=null){
-            //
-        }
-    }
+  }
 }
 </script>
 
