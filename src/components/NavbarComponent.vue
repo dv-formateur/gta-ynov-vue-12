@@ -14,7 +14,7 @@
                     <div class="uk-navbar-dropdown">
                         <ul class="uk-nav uk-navbar-dropdown-nav">
                             <li><a href="#">Planning</a></li>
-                            <li><a href="#">Tableau de bord personnel</a></li>
+                            <li><router-link to="/dashboard">Tableau de bord personnel</router-link></li>
                         </ul>
                     </div>
                 </li>
@@ -22,9 +22,7 @@
                     <a href="#">Responsable</a>
                     <div class="uk-navbar-dropdown">
                         <ul class="uk-nav uk-navbar-dropdown-nav">
-                            <li class="uk-active"><router-link to="/add_user">Ajout de user</router-link></li>
-                            <li><a href="#">Item</a></li>
-                            <li><a href="#">Item</a></li>
+                            <li class="uk-active"><router-link to="/add_user">Gestion des utilisateurs</router-link></li>
                         </ul>
                     </div>
                 </li>
@@ -33,8 +31,6 @@
                     <div class="uk-navbar-dropdown">
                         <ul class="uk-nav uk-navbar-dropdown-nav">
                             <li class="uk-active"><router-link to="admin">Paramètres de l'application</router-link></li>
-                            <li><a href="#">Item</a></li>
-                            <li><a href="#">Item</a></li>
                         </ul>
                     </div>
                 </li>
@@ -58,6 +54,7 @@
 </template>
 
 <script>
+//TODO End navbar 
     export default {
         name: "NavbarComponent",
         data() {

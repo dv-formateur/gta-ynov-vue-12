@@ -19,7 +19,6 @@
                     Login
                 </button>
             </div>
-            <!--<router-link to="/register">Register</router-link>-->
         </div>
     </div>
 </template>

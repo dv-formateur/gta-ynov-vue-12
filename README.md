@@ -12,7 +12,7 @@ responsable : responsable@gta.com/P@ssw0rd
 drh : drh@gta.com/P@ssw0rd
 ```
 
-###TODO
+###A faire
 ```
 Set up RBAC routing (Salarié, DRH, Reponsable d'équipe)
 Salarié:
@@ -51,7 +51,7 @@ DRH:
   Paramétrer les motifs d’absence
 ```
 
-###TODO / DONE
+###A faire / Fait
 ```
 08/11/2018:
 - Création du projet
