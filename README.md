@@ -7,9 +7,9 @@ https://gta-ynov-cours.herokuapp.com
 
 ###Compte
 ```
-salarie : 
-responsable : 
-drh : 
+salarie : salarie@gta.com/P@ssw0rd
+responsable : responsable@gta.com/P@ssw0rd
+drh : drh@gta.com/P@ssw0rd
 ```
 
 ###TODO
