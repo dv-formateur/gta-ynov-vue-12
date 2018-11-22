@@ -1,5 +1,15 @@
 # gta
 
+###Lien
+```
+https://gta-ynov-cours.herokuapp.com
+```
+
+###Compte
+```
+
+```
+
 ###TODO
 ```
 Set up RBAC routing (Salarié, DRH, Reponsable d'équipe)
@@ -39,7 +49,7 @@ DRH:
   Paramétrer les motifs d’absence
 ```
 
-###DONE
+###TODO / DONE
 ```
 08/11/2018:
 - Création du projet
@@ -52,4 +62,11 @@ DRH:
 
 15/11/2018: 
 - 
+
+16/11/2018:
+- Gestion des motifs d'absences (drh)
+
+22/11/2018 :
+- 
+
 ```

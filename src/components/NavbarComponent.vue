@@ -22,7 +22,7 @@
                     <a href="#">Responsable</a>
                     <div class="uk-navbar-dropdown">
                         <ul class="uk-nav uk-navbar-dropdown-nav">
-                            <li class="uk-active"><a href="#">Active</a></li>
+                            <li class="uk-active"><router-link to="/add_user">Ajout de user</router-link></li>
                             <li><a href="#">Item</a></li>
                             <li><a href="#">Item</a></li>
                         </ul>

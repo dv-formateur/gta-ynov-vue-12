@@ -3,8 +3,8 @@ import Router from 'vue-router'
 import Home from './../components/HomeComponent'
 import Login from './../components/LoginComponent'
 import Dashboard from '../components/DashboardComponent'
-import Admin from './../components/AdminComponent'
-
+import Admin from '../components/admin/AdminComponent'
+import AddUser from "../components/AddUserComponent"
 Vue.use(Router)
 
 let router = new Router({
@@ -19,6 +19,15 @@ let router = new Router({
             }
         },
         {
+            path: '/add_user',
+            name: 'Add User',
+            component: AddUser,
+            meta: {
+                requiresAuth: true,
+                role: ['drh', 'responsable']
+            }
+        },
+        {
             path: '/login',
             name: 'login',
             component: Login,
@@ -26,14 +35,6 @@ let router = new Router({
                 guest: true
             }
         },
-        // {
-        //     path: '/register',
-        //     name: 'register',
-        //     component: Register,
-        //     meta: {
-        //         guest: true
-        //     }
-        // },
         {
             path: '/dashboard',
             name: 'Dashboard',
@@ -48,7 +49,7 @@ let router = new Router({
             component: Admin,
             meta: {
                 requiresAuth: true,
-                role : "drh"
+                role : ["drh"]
             }
         },
     ]
@@ -64,7 +65,13 @@ router.beforeEach((to, from, next) => {
         } else {
             let user = JSON.parse(localStorage.getItem('user'))
             if(to.meta.role != undefined) {
-                if(user.role === to.meta.role){
+                let rolefound = null
+                to.meta.role.forEach((role)=>{
+                    if(user.role === role){
+                        rolefound = true
+                    }
+                })
+                if(rolefound){
                     next()
                 }
                 else{

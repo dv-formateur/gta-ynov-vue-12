@@ -42,7 +42,7 @@
 
 <script>
     export default {
-        name: "RegisterComponent",
+        name: "AddUserComponent",
         props : ["nextUrl"],
         data(){
             return {

@@ -3,20 +3,19 @@
         <h1>Admin page</h1>
         <div class="container">
             <div class="col-xs-12">
-                <h2>Motifs d'absences</h2>
-                <ul>
-                    <li v-for="absence in absences">
-                        {{absence.name}}
-                    </li>
-                </ul>
+                <absences_component></absences_component>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+    import AbsencesComponent from "./plugin/AbsencesComponent"
     export default {
         name: "AdminComponent",
+        components:{
+            'absences_component': AbsencesComponent
+        },
         data () {
             return {
                 absences: []
