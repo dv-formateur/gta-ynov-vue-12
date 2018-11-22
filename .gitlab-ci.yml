@@ -32,8 +32,6 @@ test_ci_push:
     - git remote add github $URL_GITHUB
     - git config --global user.name "msaintmartin"
     - git config --global user.email "matthieu.saint-martin@ynov.com"
-    - git add --all
-    - git commit -m "GitLab Runner Push"
     - git push -u github master
     - cd ..
 
