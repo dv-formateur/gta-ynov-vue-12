@@ -153,7 +153,6 @@
         beforeCreate(){
             this.loading = true
             var url = 'https://gta-ynov-cours-api.herokuapp.com/users'
-            url = "http://localhost:3000/users"
             this.$http.get(url).then((response) => {
                 if(response.data) this.users = response.data.users
                 this.loading = false
@@ -165,7 +164,6 @@
                 if (this.password === this.password_confirmation && this.password.length > 0)
                 {
                     var url = "https://gta-ynov-cours-api.herokuapp.com/register"
-                    url = "http://localhost:3000/register"
                     this.$http.post(url, {
                         name: this.name,
                         email: this.email,
@@ -173,8 +171,7 @@
                         role: this.role
                     })
                         .then(response => {
-                            var url = 'https://gta-ynov-cours-api.herokuapp.com/users'
-                            url = "http://localhost:3000/users"
+                            var url = 'https://gta-ynov-cours-api.herokuapp.com/users'                    
                             this.$http.get(url).then((response) => {
                                 if(response.data) this.users = response.data.users
                                 this.loading = false
@@ -200,10 +197,8 @@
                 if(confirm('User will be deleted')){
                     this.loading = true
                     var url = 'https://gta-ynov-cours-api.herokuapp.com/users/' + user_id
-                    url = "http://localhost:3000/users/" + user_id
                     this.$http.delete(url).then((response) => {
                         var url = 'https://gta-ynov-cours-api.herokuapp.com/users'
-                        url = "http://localhost:3000/users"
                         this.$http.get(url).then((response) => {
                             if(response.data) this.users = response.data.users
                             this.loading = false
@@ -226,7 +221,6 @@
             handleEdit() {
                 this.loading = true
                 var url = "https://gta-ynov-cours-api.herokuapp.com/users/" + this.id_edit
-                    url = "http://localhost:3000/users/" + this.id_edit
                     this.$http.put(url, {
                         user: {
                             name: this.name_edit,
@@ -236,7 +230,6 @@
                     })
                         .then(response => {
                             var url = 'https://gta-ynov-cours-api.herokuapp.com/users'
-                            url = "http://localhost:3000/users"
                             this.$http.get(url).then((response) => {
                                 if(response.data) this.users = response.data.users
                                 this.loading = false

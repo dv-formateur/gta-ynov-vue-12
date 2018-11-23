@@ -31,7 +31,7 @@
         beforeCreate(){
             this.loading = true
             const user_id = JSON.parse(localStorage.getItem('user')).id
-            this.$http.get('http://localhost:3000/user/' + user_id + '/events').then((response)=>{
+            this.$http.get('https://gta-ynov-cours-api.herokuapp.com/user/' + user_id + '/events').then((response)=>{
                 if(response.data) this.events = response.data.events
                 this.loading = false
             })

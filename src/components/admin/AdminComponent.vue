@@ -23,7 +23,6 @@
         },
         beforeCreate(){
             var url = "https://gta-ynov-cours-api.herokuapp.com/absences"
-            url = "http://localhost:3000/absences"
             this.$http.get(url).then((data)=>{
                 this.absences = data.data.absences
             })
