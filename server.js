@@ -1,4 +1,5 @@
 // server.js
+
 var express = require('express');
 var serveStatic = require('serve-static');
 const app = express();

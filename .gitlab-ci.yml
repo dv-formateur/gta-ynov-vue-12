@@ -3,8 +3,8 @@ image: node:latest
 stages:
   - install
   - build
-  - push_github
   - production
+  - push_github
 
 install:
   stage: install
@@ -25,16 +25,6 @@ build:
     paths:
       - dist/
 
-test_ci_push:
-  stage: push_github
-  allow_failure: false
-  script:
-    - git remote add github $URL_GITHUB
-    - git config --global user.name "msaintmartin"
-    - git config --global user.email "matthieu.saint-martin@ynov.com"
-    - git push -u github master
-    - cd ..
-
 production:
   type: deploy
   stage: production
@@ -44,4 +34,20 @@ production:
     - apt-get update -qy
     - apt-get install -y ruby-dev
     - gem install dpl
+    - cp -R dist/* .
+    - rm -rf dist
+    - echo "<?php header( 'Location:index.html' ) ;  ?>" > index.php
+    - rm -rf node_modules/
+    - ls
     - dpl --provider=heroku --app=gta-ynov-cours --api-key=195bd5a9-b091-4986-bc86-de2d12ebe09a
+
+
+test_ci_push:
+  stage: push_github
+  allow_failure: false
+  script:
+    - git remote add github $URL_GITHUB
+    - git config --global user.name "msaintmartin"
+    - git config --global user.email "matthieu.saint-martin@ynov.com"
+    - git push -u github master
+    - cd ..
