@@ -6,9 +6,9 @@
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "start": "npm run-script build && node server.js",
+    "start": "node server.js",
     "lint": "eslint --ext .js,.vue src",
-    "build": "node build/build.js && cp server.js dist/"
+    "build": "node build/build.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
