@@ -28,4 +28,15 @@ export default {
   width: 100vw;
   overflow: hidden;
 }
+.uk-h1, .uk-h2, .uk-h3, .uk-h4, .uk-h5, .uk-h6, h1, h2, h3, h4, h5, h6{
+  color: #d8d8d8;
+}
+.uk-modal-header,
+.uk-modal-dialog,
+.uk-modal-footer{
+  background: #3e454c;
+}
+.uk-modal label{
+  color: #d8d8d8;
+}
 </style>
