@@ -15,11 +15,10 @@ install:
     paths:
       - node_modules/
 
-
 build:
   stage: build
   script:
-    - npm run build
+    - npm run-script build
   artifacts:
     expire_in: 1 day
     paths:
