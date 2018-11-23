@@ -29,7 +29,6 @@ production:
   stage: production
   image: ruby:latest
   script:
-    - cd dist
     - apt-get update -qy
     - apt-get install -y ruby-dev
     - gem install dpl
