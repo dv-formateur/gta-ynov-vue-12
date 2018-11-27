@@ -1,10 +1,7 @@
 <template>
     <div class="hello">
         <div id="events-container" v-bind:class="{'reduced': calendarFullPage}">
-                    <h1>Welcome to regular users page</h1>
-                    <button v-on:click="viewCalendarDay">1</button>
-        <button v-on:click="viewCalendarWeek">7</button>
-        <button v-on:click="viewCalendarMonth">30</button>
+            <h1>Welcome to regular users page</h1>
             <div v-if="!loading" uk-grid class="uk-grid-small uk-child-width-expand@s uk-text-center">
                 <div v-for="event in events" :key="event.id" class="uk-card uk-card-default uk-card-body">
                     <h3 class="uk-card-title">{{event.name}}</h3>
@@ -20,6 +17,11 @@
             </div>
         </div>
         <calendar id="calendar" ref="tuiCalendar" v-bind:class="{'extanded':calendarFullPage}"/>
+        <div id="calendar-views-container" v-bind:class="{'slideBottom': calendarFullPage}">
+                <button v-on:click="viewCalendarDay">1</button>
+                <button v-on:click="viewCalendarWeek">7</button>
+                <button v-on:click="viewCalendarMonth">30</button>
+            </div>
         <button @click="toggleCalendar" v-bind:class="{'calendarOpened': calendarFullPage}" id="calendarToggler"><span>></span></button>
     </div>
 </template>
@@ -80,6 +82,9 @@
         methods: {
             toggleCalendar: function() {
                 this.calendarFullPage = !this.calendarFullPage
+                this.toggleHeightOnCalendar()
+            },
+            toggleHeightOnCalendar: function(){
                 if(this.calendarFullPage){
                     if(document.getElementsByClassName("tui-full-calendar-vlayout-area tui-full-calendar-vlayout-container")[0]){
                         this.storeHeightCalendar = document.getElementsByClassName("tui-full-calendar-vlayout-area tui-full-calendar-vlayout-container")[0].style.height
@@ -98,16 +103,18 @@
                         document.querySelector("div.tui-full-calendar-month.tui-full-calendar-vlayout-container > div:nth-child(2)").style.height = this.storeHeightCalendar;
                     }
                 }
-                
             },
             viewCalendarDay: function () {
                 this.$refs.tuiCalendar.invoke('changeView', 'day', 'true')
+                this.toggleHeightOnCalendar()
             },
             viewCalendarWeek: function () {
                 this.$refs.tuiCalendar.invoke('changeView', 'week', 'true')
+                this.toggleHeightOnCalendar()
             },
             viewCalendarMonth: function () {
                 this.$refs.tuiCalendar.invoke('changeView', 'month', 'true')
+                this.toggleHeightOnCalendar()
             }
         }
     }
@@ -123,7 +130,25 @@ overflow-y: scroll;
 </style>
 
 <style scoped>
-
+#calendar-views-container{
+    position: absolute;
+    top: calc(100vh - 30vh - 30px);    
+    transition: all ease-in-out .5s;
+    width: calc(50vw + (150px / 2));
+    text-align: right;
+}
+#calendar-views-container.slideBottom{
+    top: calc(100vh - 30px - (24px/2));
+    width: 95vw;
+}
+#calendar-views-container > *{
+    width: 50px;
+    height: 20px;
+    color: #D8D8D8;
+    background: #3e454c;
+    box-shadow: 1px 1px 4px #111;
+    border: 0;
+}
 #calendarToggler{
     position: absolute;
     top: calc(100vh - 30vh + (42px / 2) - (20px / 2));

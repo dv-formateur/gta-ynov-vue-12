@@ -94,6 +94,9 @@
             </div>
         </div>
     </div>
+    <div v-else>
+        loading...
+    </div>
 </template>
 
 <script>
@@ -114,13 +117,11 @@
                 this.loading = true
                 var user = this.user_edit
                 var url = "https://gta-ynov-cours-api.herokuapp.com/users/" + this.user.id
-                url = "http://localhost:5000/users/" + this.user.id
                 this.$http.put(url, {
                     user
                 })
                 .then(response => {
                     var url = 'https://gta-ynov-cours-api.herokuapp.com/users/' + this.user.id
-                    url = "http://localhost:5000/users/" + this.user.id
                     this.$http.get(url).then((response) => {
                         if(response.data) this.user = response.data.user
                         this.loading = false
@@ -135,7 +136,6 @@
         beforeCreate(){
             this.user = JSON.parse(localStorage.getItem('user'))
             var url = 'https://gta-ynov-cours-api.herokuapp.com/users/' + this.user.id
-            url = "http://localhost:5000/users/" + this.user.id
             this.$http.get(url).then((response) => {
                 if(response.data) this.user = response.data.user
                 if(this.user) localStorage.setItem('user', JSON.stringify(this.user))
