@@ -6,9 +6,9 @@
                 <div v-for="event in events" :key="event.id" class="uk-card uk-card-default uk-card-body">
                     <h3 class="uk-card-title">{{event.name}}</h3>
                     <p>
-                        Start : {{event.debut}}
+                        Start : {{event.begin}}
                         <br/>
-                        End: {{event.fin}}  
+                        End: {{event.end}}  
                     </p>
                 </div>
             </div>
@@ -16,7 +16,13 @@
                 loading...
             </div>
         </div>
-        <calendar id="calendar" ref="tuiCalendar" v-bind:class="{'extanded':calendarFullPage}"/>
+        <calendar id="calendar" ref="tuiCalendar" v-bind:class="{'extanded':calendarFullPage}"
+        :schedules="calendarData.scheduleList"
+        :useCreationPopup="calendarData.useCreationPopup"
+        :scheduleView="calendarData.scheduleView"
+        @beforeCreateSchedule="onClickSchedule"
+        @beforeDeleteSchedule="deleteSchedule"
+        />
         <div id="calendar-views-container" v-bind:class="{'slideBottom': calendarFullPage}">
                 <button v-on:click="viewCalendarDay">1</button>
                 <button v-on:click="viewCalendarWeek">7</button>
@@ -49,37 +55,49 @@
                         name: 'office'
                     }
                     ],
-                    scheduleList: [
-                    {
-                        id: '1',
-                        calendarId: '1',
-                        title: 'my schedule',
-                        category: 'time',
-                        dueDateClass: '',
-                        start: '2018-10-28T22:30:00+09:00',
-                        end: '2018-10-29T02:30:00+09:00'
-                    },
-                    {
-                        id: '2',
-                        calendarId: '1',
-                        title: 'second schedule',
-                        category: 'time',
-                        dueDateClass: '',
-                        start: '2018-10-18T17:30:00+09:00',
-                        end: '2018-10-19T17:31:00+09:00'
-                    }
-                    ]}
+                    scheduleList: [],
+                    useCreationPopup: true,
+                    scheduleView: ['time']
+                },
+                user: JSON.parse(localStorage.getItem('user'))
             }
         },
         beforeCreate(){
-            this.loading = true
-            const user_id = JSON.parse(localStorage.getItem('user')).id
-            this.$http.get('https://gta-ynov-cours-api.herokuapp.com/user/' + user_id + '/events').then((response)=>{
-                if(response.data) this.events = response.data.events
-                this.loading = false
-            })
+            setTimeout(()=>{
+                this.updateCalendarData()
+            }, 100)
         },
         methods: {
+            updateCalendarData(){
+                this.loading = true
+                this.$http.get('https://gta-ynov-cours-api.herokuapp.com/user/' + this.user.id + '/events').then((response)=>{
+                if(response.data) {
+                    let events = response.data.events
+                    let calendarEvents = []
+                    events.forEach(event => {
+                        let calendarEvent = {
+                            id: event.id,
+                            calendarId: "1",
+                            category: 'time',
+                            dueDateClass: '',
+                            title: event.name,
+                            start: event.debut,
+                            end: event.fin
+                        }
+                        calendarEvents.push(calendarEvent)
+                    });
+                    this.calendarData.scheduleList = calendarEvents
+
+                    events.forEach((event) => {
+                        event.debut = new Date(event.debut)
+                        event.fin = new Date(event.fin)
+                    })
+
+                    this.events = events
+                }
+                this.loading = false
+            })
+            },
             toggleCalendar: function() {
                 this.calendarFullPage = !this.calendarFullPage
                 this.toggleHeightOnCalendar()
@@ -115,7 +133,29 @@
             viewCalendarMonth: function () {
                 this.$refs.tuiCalendar.invoke('changeView', 'month', 'true')
                 this.toggleHeightOnCalendar()
-            }
+            },
+            onClickSchedule: function (e){
+                const event = {
+                    begin: e.start._date,
+                    end: e.end._date,
+                    title: e.title,
+                    user: this.user.id,
+                    validation: null,
+                    absences: 217
+                }
+                var url = 'https://gta-ynov-cours-api.herokuapp.com/events'
+                url = "http://localhost:5000/events"
+                this.$http.post(url, {event}).then((response) => {
+                    if(response.data) this.updateCalendarData()
+                })
+            },
+            deleteSchedule: function(e) {
+                var url = 'https://gta-ynov-cours-api.herokuapp.com/events/' + e.schedule.id
+                url = "http://localhost:5000/events/" + e.schedule.id
+                this.$http.delete(url).then((response)=>{
+                    if(response.data) this.updateCalendarData()
+                })
+            },
         }
     }
 </script>
