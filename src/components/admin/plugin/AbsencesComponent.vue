@@ -139,6 +139,11 @@
         width: 40%;
         margin: auto;
     }
+    @media (max-width: 768px) {
+        #absence-container{
+            width: 90%;
+        }
+    }
     ul{
         text-align: left;
     }

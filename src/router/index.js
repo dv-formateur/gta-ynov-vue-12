@@ -5,6 +5,7 @@ import Login from './../components/LoginComponent'
 import Dashboard from '../components/DashboardComponent'
 import Admin from '../components/admin/AdminComponent'
 import AddUser from "../components/AddUserComponent"
+import Profil from "../components/ProfilComponent"
 Vue.use(Router)
 
 let router = new Router({
@@ -52,6 +53,14 @@ let router = new Router({
                 role : ["drh"]
             }
         },
+        {
+            path: '/profil',
+            name: 'profil',
+            component: Profil,
+            meta: {
+                requiresAuth: true
+            }
+        }
     ]
 })
 

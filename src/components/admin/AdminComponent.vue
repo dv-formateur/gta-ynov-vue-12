@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <h1>Admin page</h1>
+    <div id="parent">
+        <h1>Paramètres de l'application</h1>
         <div class="container">
             <div class="col-xs-12">
                 <absences_component></absences_component>
@@ -31,5 +31,7 @@
 </script>
 
 <style scoped>
-
+    #parent{
+        padding: 0 10px;
+    }
 </style>

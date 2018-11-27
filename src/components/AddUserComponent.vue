@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="margin-top: 10px;">
         <h4>Register</h4> 
         <table class="uk-table uk-table-divider uk-table-striped" v-if="!loading">
             <caption></caption>
